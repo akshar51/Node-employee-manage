@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require("path");
 const app = express();
 const port = 3000;
-const emp = [];
+let emp = [];
 
 app.use(express.static(path.join(__dirname,'public')))
 app.use(express.urlencoded({extended : true}))
@@ -16,13 +16,18 @@ app.get('/',function(req,res){
 
 app.get('/table',function(req,res){
     res.render('table',{emp})
-    res.redirect(req.get('Referrer'|| '/'))
 })
 
 
 app.post('/',function(req,res){
     emp.push({...req.body,id : Date.now()})
-    res.redirect(req.get('Referrer') || '/')
+    res.redirect('/table' || '/')
+})
+
+app.get('emp/delete/:id',function(req,res){
+    let { id } = req.params;
+    emp = emp.filter(val => val.id != id)
+    res.redirect('/table')
 })
 
 app.listen(port,function(err){
