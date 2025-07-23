@@ -24,7 +24,7 @@ app.post('/',function(req,res){
     res.redirect('/table' || '/')
 })
 
-app.get('emp/delete/:id',function(req,res){
+app.get('/emp/delete/:id',function(req,res){
     let { id } = req.params;
     emp = emp.filter(val => val.id != id)
     res.redirect('/table')
