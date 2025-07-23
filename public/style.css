@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black !important;
+    color: white !important;
+}
+
+.header{
+    background-color: black !important;
+    color: white !important;
+    border-bottom: 1px solid rgb(70, 70, 70);
+}
+
+form input{
+    background: transparent !important;
+    color: white !important;
+    padding: 0.6rem !important;
+    outline: none;
+    border-color: rgb(135, 135, 135) !important;
+}
+
+form input::placeholder{
+    color: rgb(54, 54, 54) !important;
+}
