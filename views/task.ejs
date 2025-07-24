@@ -18,21 +18,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
-            <h2 class="my-4">Edit Employee Data : </h2>
+            <h2 class="my-4">Assign Task : </h2>
           <!-- Form-start -->
-          <form action="/emp/edit?id=<%= data.id%>" method="post">
-            <div class="mb-3">
-              <label for="empId" class="form-label fw-medium">Employee ID : </label>
-              <input
-                type="number"
-                class="form-control text-white"
-                id="empId"
-                name="empId"
-                value="<%= data.empId%>"
-                placeholder="Enter ID"
-                required
-              />
-            </div>
+          <form action="" method="post">
             <div class="mb-3">
               <label for="empName" class="form-label fw-medium">Name : </label>
               <input
@@ -40,22 +28,31 @@
                 class="form-control text-white"
                 id="empName"
                 name="empName"
-                value="<%= data.empName%>"
-                placeholder="Enter employee name"
+                value=""
                 required
               />
             </div>
             <div class="mb-3">
-              <label for="empDepartment" class="form-label fw-medium"
-                >Department :
+              <label for="empTask" class="form-label fw-medium">Task : </label>
+              <input
+                type="text"
+                class="form-control text-white"
+                id="empTask"
+                name="empTask"
+                placeholder="Enter task"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label fw-medium"
+                >Description :
               </label>
               <input
                 type="text"
                 class="form-control text-white"
-                id="empDepartment"
-                name="empDepartment"
-                value="<%= data.empDepartment%>"
-                placeholder="Enter employee Department"
+                id="description"
+                name="description"
+                placeholder="Enter description"
                 required
               />
             </div>
@@ -66,12 +63,11 @@
                 class="form-control text-white"
                 id="empSalary"
                 name="empSalary"
-                value="<%= data.empSalary%>"
                 placeholder="Enter employee salary"
                 required
               />
             </div>
-            <button type="submit" class="btn btn-success">Update</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
           <!-- Form-end -->
         </div>

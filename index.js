@@ -18,18 +18,11 @@ app.get('/table',function(req,res){
     res.render('table',{emp})
 })
 
-
-app.get('/emp/edit/',function(req,res){
-    res.render('edit',{emp})
+app.get('/emp/edit',function(req,res){
+    const {id} = req.query
+    let data = emp.find(val => val.id == id)
+    res.render('edit',{data})
 })
-
-
-
-app.post('/',function(req,res){
-    emp.push({...req.body,id : Date.now()})
-    res.redirect('/table' || '/')
-})
-
 
 // delete
 app.get('/emp/delete/:id',function(req,res){
@@ -38,12 +31,27 @@ app.get('/emp/delete/:id',function(req,res){
     res.redirect('/table')
 })
 
-// edit
-app.get('/emp/edit/',function(req,res){
-    const {id} = req.query
-    let data = emp.find(val => val.id == id)
-    return res.render('edit',{data})
+// create
+app.post('/',function(req,res){
+    emp.push({...req.body,id : Date.now()})
+    res.redirect('/table' || '/')
 })
+
+// edit
+app.post('/emp/edit/',function(req,res){
+    const {id} = req.query
+    emp = emp.map((val)=>{
+        if(val.id == id){
+            return {...req.body,id:val.id}
+        }
+        return val
+    })
+    res.redirect('/table')
+})
+
+
+
+
 
 app.listen(port,function(err){
     if(err){
