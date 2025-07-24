@@ -19,15 +19,30 @@ app.get('/table',function(req,res){
 })
 
 
+app.get('/emp/edit/',function(req,res){
+    res.render('edit',{emp})
+})
+
+
+
 app.post('/',function(req,res){
     emp.push({...req.body,id : Date.now()})
     res.redirect('/table' || '/')
 })
 
+
+// delete
 app.get('/emp/delete/:id',function(req,res){
     let { id } = req.params;
     emp = emp.filter(val => val.id != id)
     res.redirect('/table')
+})
+
+// edit
+app.get('/emp/edit/',function(req,res){
+    const {id} = req.query
+    let data = emp.find(val => val.id == id)
+    return res.render('edit',{data})
 })
 
 app.listen(port,function(err){
