@@ -28,8 +28,8 @@
                 class="form-control text-white"
                 id="empName"
                 name="empName"
-                value=""
-                required
+                value="<%= data.empName%>"
+                readonly
               />
             </div>
             <div class="mb-3">
@@ -56,7 +56,7 @@
                 required
               />
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
               <label for="empSalary" class="form-label fw-medium">Salary : </label>
               <input
                 type="number"
@@ -66,8 +66,8 @@
                 placeholder="Enter employee salary"
                 required
               />
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            </div> -->
+            <button type="submit" class="btn btn-success">Assign Task</button>
           </form>
           <!-- Form-end -->
         </div>
