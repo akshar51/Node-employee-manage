@@ -24,6 +24,13 @@ app.get('/emp/edit',function(req,res){
     res.render('edit',{data})
 })
 
+app.get('/emp/task',function(req,res){
+    const {id} = req.query;
+    let data = emp.find(val => val.id == id)
+    console.log(data)
+    res.render('task',{data})
+})
+
 // delete
 app.get('/emp/delete/:id',function(req,res){
     let { id } = req.params;
