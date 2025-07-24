@@ -15,6 +15,7 @@ app.get('/',function(req,res){
 })
 
 app.get('/table',function(req,res){
+    console.dir(emp, { depth: null });
     res.render('table',{emp})
 })
 
@@ -40,7 +41,7 @@ app.get('/emp/delete/:id',function(req,res){
 
 // create
 app.post('/',function(req,res){
-    emp.push({...req.body,id : Date.now()})
+    emp.push({...req.body,id : Date.now(),task : []})
     res.redirect('/table' || '/')
 })
 
@@ -49,13 +50,30 @@ app.post('/emp/edit/',function(req,res){
     const {id} = req.query
     emp = emp.map((val)=>{
         if(val.id == id){
-            return {...req.body,id:val.id}
+            return {...val,...req.body}
         }
         return val
     })
     res.redirect('/table')
 })
 
+// task
+app.post('/assign/task',function(req,res){
+    const {empTask,description,id} = req.body;
+    emp = emp.map((val)=>{
+        if(val.id == id){
+            const taskObj = {
+                task : empTask,
+                description : description,
+                date : new Date().toLocaleDateString()
+            }
+            if(!val.task) val.task = [];
+            val.task.push(taskObj); 
+        }
+        return val;
+    })
+    res.redirect('/table')
+})
 
 
 

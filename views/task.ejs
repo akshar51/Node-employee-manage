@@ -20,7 +20,8 @@
         <div class="col-md-6 mx-auto">
             <h2 class="my-4">Assign Task : </h2>
           <!-- Form-start -->
-          <form action="" method="post">
+          <form action="/assign/task" method="post">
+            <input type="hidden" name="id" value="<%= data.id %>" />
             <div class="mb-3">
               <label for="empName" class="form-label fw-medium">Name : </label>
               <input
