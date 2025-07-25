@@ -28,8 +28,13 @@ app.get('/emp/edit',function(req,res){
 app.get('/emp/task',function(req,res){
     const {id} = req.query;
     let data = emp.find(val => val.id == id)
-    console.log(data)
     res.render('task',{data})
+})
+
+app.get('/emp/task/review',function(req,res){
+    const {id} = req.query;
+    let data = emp.find(val => val.id == id);
+    res.render('reviewTask',{data})
 })
 
 // delete
